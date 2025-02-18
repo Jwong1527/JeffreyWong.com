@@ -1,2 +1,2 @@
 # JeffreyWong.com
-My portfolio using React.js and Flask. 
+My portfolio 
