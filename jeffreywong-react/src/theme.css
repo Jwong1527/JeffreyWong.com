@@ -1,0 +1,22 @@
+:root {
+    --bg-color: #f0f8ff;
+    --text-color: #0a0a0a;
+    --accent-color: #4ea8de;
+  }
+  
+  [data-theme='dark'] {
+    --bg-color: #0e1a2b;
+    --text-color: #e0e0e0;
+    --accent-color: #4ea8de;
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.4s, color 0.4s;
+  }
+  
+  a {
+    color: var(--accent-color);
+  }
+  
