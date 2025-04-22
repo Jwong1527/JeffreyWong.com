@@ -5,10 +5,12 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: "Poppins", sans-serif;
+  cursor: none;
 }
 
 html {
@@ -16,18 +18,16 @@ html {
 }
 
 p {
-  color: rgb(85, 85, 85);
+  color: rgb(255, 255, 255);
 }
 
 /* TRANSITION */
-
 a,
 .btn {
   transition: all 300ms ease;
 }
 
 /* DESKTOP NAV */
-
 nav,
 .nav-links {
   display: flex;
@@ -46,7 +46,7 @@ nav {
 }
 
 a {
-  color: black;
+  color: white;
   text-decoration: none;
   text-decoration-color: white;
 }
@@ -67,7 +67,6 @@ a:hover {
 }
 
 /* HAMBURGER MENU */
-
 #hamburger-nav {
   display: none;
 }
@@ -134,23 +133,10 @@ a:hover {
   transform: rotate(-45deg) translate(10px, -5px);
 }
 
-.hamburger-icon span:first-child {
-  transform: none;
-}
-
-.hamburger-icon span:first-child {
-  opacity: 1;
-}
-
-.hamburger-icon span:first-child {
-  transform: none;
-}
-
 /* SECTIONS */
-
 section {
   padding-top: 4vh;
-  height: 96vh;
+  height: auto;
   margin: 0 10rem;
   box-sizing: border-box;
   min-height: fit-content;
@@ -158,10 +144,12 @@ section {
 
 .section-container {
   display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* PROFILE SECTION */
-
 #profile {
   display: flex;
   justify-content: center;
@@ -192,11 +180,13 @@ section {
 .section__text__p2 {
   font-size: 1.75rem;
   margin-bottom: 1rem;
+  color: white;
 }
 
 .title {
   font-size: 3rem;
   text-align: center;
+  color: white;
 }
 
 #socials-container {
@@ -207,14 +197,12 @@ section {
 }
 
 /* ICONS */
-
 .icon {
   cursor: pointer;
   height: 2rem;
 }
 
 /* BUTTONS */
-
 .btn-container {
   display: flex;
   justify-content: center;
@@ -257,12 +245,7 @@ section {
   border: rgb(255, 255, 255) 0.1rem solid;
 }
 
-.btn-container {
-  gap: 1rem;
-}
-
 /* ABOUT SECTION */
-
 #about {
   position: relative;
 }
@@ -296,201 +279,55 @@ section {
 .details-container {
   padding: 1.5rem;
   flex: 1;
-  background: white;
-  border-radius: 2rem;
-  border: rgb(53, 53, 53) 0.1rem solid;
-  border-color: rgb(163, 163, 163);
   text-align: center;
-}
-
-.section-container {
-  gap: 4rem;
-  height: 80%;
-}
-
-.section__pic-container {
-  height: 400px;
-  width: 400px;
-  margin: auto 0;
-}
-
-/* EXPERIENCE SECTION */
-
-#experience {
-  position: relative;
-}
-
-.experience-sub-title {
-  color: rgb(85, 85, 85);
-  font-weight: 600;
-  font-size: 1.75rem;
-  margin-bottom: 2rem;
-}
-
-.experience-details-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.article-container {
-  display: flex;
-  text-align: initial;
-  flex-wrap: wrap;
-  flex-direction: row;
-  gap: 2.5rem;
-  justify-content: space-around;
-}
-
-article {
-  display: flex;
-  width: 10rem;
-  justify-content: space-around;
-  gap: 0.5rem;
-}
-
-article .icon {
-  cursor: default;
-}
-
-/* PROJECTS SECTION */
-
-#projects {
-  position: relative;
-}
-
-.color-container {
-  border-color: rgb(163, 163, 163);
-  background: rgb(250, 250, 250);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: white;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .project-img {
-  border-radius: 2rem;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  object-fit: cover;
 }
 
-.project-title {
-  margin: 1rem;
-  color: black;
+/* THEME SUPPORT */
+:root {
+  --about-bg-light: #ffffff;
+  --about-bg-dark: #1e1e1e;
+  --about-text-light: #111111;
+  --about-text-dark: #f5f5f5;
 }
 
-.project-btn {
-  color: black;
-  border-color: rgb(163, 163, 163);
+[data-theme="light"] .details-container {
+  background-color: var(--about-bg-light);
+  color: var(--about-text-light);
 }
 
-/* CONTACT */
-
-#contact {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  height: 70vh;
+[data-theme="dark"] .details-container {
+  background-color: var(--about-bg-dark);
+  color: var(--about-text-dark);
 }
 
-.contact-info-upper-container {
-  display: flex;
-  justify-content: center;
-  border-radius: 2rem;
-  border: rgb(53, 53, 53) 0.1rem solid;
-  border-color: rgb(163, 163, 163);
-  background: (250, 250, 250);
-  margin: 2rem auto;
-  padding: 0.5rem;
-}
-
-.contact-info-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin: 1rem;
-}
-
-.contact-info-container p {
-  font-size: larger;
-}
-
-.contact-icon {
-  cursor: default;
-}
-
-.email-icon {
-  height: 2.5rem;
-}
-
-/* FOOTER SECTION */
-
-footer {
-  height: 26vh;
-  margin: 0 1rem;
-}
-
-footer p {
-  text-align: center;
-}
-/* === Custom Yellow Cursor Dot === */
-body {
-  cursor: none;
-}
-
-.cursor-dot {
+.custom-cursor {
   position: fixed;
   top: 0;
   left: 0;
-  width: 12px;
-  height: 12px;
-  background-color: yellow;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
   border-radius: 50%;
   pointer-events: none;
-  mix-blend-mode: difference;
   z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
-}
-
-/* === Enhanced Project Card Hover Style === */
-.project-card {
-  border: 2px solid var(--accent-color, #4ea8de);
-  border-radius: 16px;
-  background-color: var(--bg-color, #f0f8ff);
-  transition: all 0.3s ease;
-  padding: 20px;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-}
-
-.project-card:hover {
-  box-shadow: 0 0 15px var(--accent-color, #4ea8de);
-  transform: scale(1.03);
-
-  section {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 1rem;
-    padding: 3rem 2rem;
-    margin: 2rem auto;
-    max-width: 900px;
-    backdrop-filter: blur(6px);
-  }
-
-  .theme-toggle {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    background-color: transparent;
-    border: 2px solid var(--accent-color, #4ea8de);
-    color: var(--text-color, #111);
-    padding: 0.4rem 1rem;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .theme-toggle:hover {
-    background-color: var(--accent-color, #4ea8de);
-    color: white;
-  }
-  
-  
+  mix-blend-mode: difference;
+  backdrop-filter: blur(5px);
+  transform: translate3d(-50%, -50%, 0) scale(1.5);
+  transition: transform 0.05s ease, box-shadow 0.05s ease, background 0.05s ease;
 }

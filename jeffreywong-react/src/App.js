@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './mediaqueries.css';
 import './theme.css';
-import './style.css' ;
+import './style.css';
 import Navbar from './components/Navbar';
 import Profile from './components/Profile';
 import About from './components/About';
@@ -9,26 +9,37 @@ import Projects from './components/Projects';
 import Footer from './components/Footer';
 
 function App() {
-  useEffect(() => {
-    const dot = document.createElement('div');
-    dot.className = 'cursor-dot';
-    document.body.appendChild(dot);
+  const cursorRef = useRef(null);
+  const [isHoveringLink, setIsHoveringLink] = useState(false);
 
-    const move = (e) => {
-      dot.style.top = `${e.clientY}px`;
-      dot.style.left = `${e.clientX}px`;
+  useEffect(() => {
+    const handleMove = (e) => {
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate3d(${e.clientX - 16}px, ${e.clientY - 16}px, 0)`;
+      }
     };
 
-    window.addEventListener('mousemove', move);
+    const handleHover = (e) => {
+      const tag = e.target.tagName.toLowerCase();
+      const interactive = ['a', 'button', 'input', 'textarea', 'select'];
+      setIsHoveringLink(interactive.includes(tag));
+    };
+
+    window.addEventListener('mousemove', handleMove);
+    window.addEventListener('mouseover', handleHover);
 
     return () => {
-      window.removeEventListener('mousemove', move);
-      document.body.removeChild(dot);
+      window.removeEventListener('mousemove', handleMove);
+      window.removeEventListener('mouseover', handleHover);
     };
   }, []);
 
   return (
     <>
+      <div
+        ref={cursorRef}
+        className={`custom-cursor ${isHoveringLink ? 'cursor-hovered' : ''}`}
+      />
       <Navbar />
       <Profile />
       <About />
